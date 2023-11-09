@@ -14,12 +14,28 @@ using namespace std;
 
 class MLSimulator {
 protected:
+    string input;
+    vector<int> reg = vector<int>(16);
+    vector<int> mem = vector<int>(256);
 
+    void intTohex();
+    void hexToint();
+    void intTobin();
+    void binToint();
 
 public:
-    void add1();
 
+    void rndm();
+    void loadCell();
+    void loadPattern();
+    void storeCell();
+    void writeToScreen();
+    void movePattern();
+    void addTwoComplement();
+    void addFloatingPoint();
+    void jump();
+    void halt();
 
-};
+};  
 
 #endif 

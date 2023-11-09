@@ -7,12 +7,13 @@
 // Date: 9th of November 2023.
 //----------------------------
 #include <bits/stdc++.h>
+#include "MLHeader.h"
 #include "MLImplementation.cpp"
 
 using namespace std;
 
 int main() {
-add1();
-
+    MLSimulator x;
+    x.rndm();
    
 }
