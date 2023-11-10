@@ -1,11 +1,8 @@
-//
-// Created by ahmad on 11/10/2023.
-//
-
 #ifndef VOLE_MACHINE_MEMORY_H
 #define VOLE_MACHINE_MEMORY_H
-#include <iostream>
-#include <vector>
+#include "Machine.h"
+#include "Machine.cpp"
+#include <bits/stdc++.h>
 using namespace std;
 
 
@@ -16,7 +13,7 @@ public:
     vector <string> cells;
     void fetch(string address);
     Memory();
+    friend int hexToint(string hexString);
 };
-
 
 #endif //VOLE_MACHINE_MEMORY_H
