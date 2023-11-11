@@ -1,10 +1,12 @@
+//
+// Created by ahmad on 11/10/2023.
+//
+
 #ifndef VOLE_MACHINE_MACHINE_H
 #define VOLE_MACHINE_MACHINE_H
-#include "Machine.h"
-#include "Machine.cpp"
 #include "Register.h"
 #include "Memory.h"
-#include <bits/stdc++.h>
+
 
 class Machine {
 private:
@@ -17,7 +19,7 @@ public:
     void loadfile(string filename);
     void decode();
     void execute();
-    friend int hexToint(string hexString);
+    friend string hexToint(string hexString);
 };
 
 

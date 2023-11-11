@@ -1,14 +1,17 @@
+//
+// Created by ahmad on 11/10/2023.
+//
+
 #include "Memory.h"
-#include "Machine.h"
-#include "Machine.cpp"
-#include <bits/stdc++.h>
+#include <iostream>
+#include <fstream>
 using namespace std;
 
-Memory::Memory(){
+Memory ::Memory(){
     address = '0';
 };
 
-void Memory::fetch(string address) {
-    int add = hexToint(address);
-    cout << cells[add];
+string Memory::fetch(int address) {
+    return cells[address];
 }
+
