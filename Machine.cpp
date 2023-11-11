@@ -6,7 +6,7 @@
 #include <cmath>
 #include <string>
 using namespace std;
-
+//a7a
 void Machine::loadfile(string filename) {
 
     ifstream in("test.txt");
