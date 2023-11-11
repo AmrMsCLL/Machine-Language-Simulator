@@ -21,7 +21,6 @@ public:
     friend int hexToint(string hexString);
 
     void Op_code (string convertAdd);
-    void converter(string address);
     void store(string address);
     void loadFromemo(string regster, string address);
     void addfloat(string address);
@@ -29,7 +28,7 @@ public:
     void move(string address);
     void add(string address);
     void jump(string address);
-    void halt(string address);
+    bool halt();
 };
 
 

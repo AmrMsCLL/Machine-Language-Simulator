@@ -6,7 +6,7 @@
 #include <cmath>
 #include <string>
 using namespace std;
-//a7a
+
 void Machine::loadfile(string filename) {
 
     ifstream in("test.txt");
@@ -72,17 +72,31 @@ void Machine::Op_code(string convertAdd) {
     value1 = strings[2];
     value2 = strings[3];
 //    cout<<op<<" "<<regster<<" "<<value1<<" "<<value2<<"\n"
-    if(op == "1"){
+    if(op == "1")
         loadFromemo(regster, value1);
-    }
-    else if(op == "2"){
+    
+    else if(op == "2")
         load(regster, value1);
-    }
-    else if(op == "3"){
-        store()
-    }
-
+    
+    else if(op == "3")
+        store(address);
+    
+    else if (op == "4")
+        move(address);
+    
+    else if (op == "5")
+        add(address);
+    
+    else if (op == "6")
+        addfloat(address);
+    
+    else if (op == "B")
+        jump(address);
+    
+    else if (op == "C")
+        halt();
 }
+
 void Machine::load(string regster, string value) {
     r.reg[hexToint(regster)] = hexToint(value);
 }
@@ -90,6 +104,27 @@ void Machine::load(string regster, string value) {
 void Machine::loadFromemo(string regster, string address) {
     r.reg[hexToint(regster)] = hexToint(address);
 }
+
+void Machine::store() {
+
+}
+
+void Machine::move() {
+
+}
+
+void Machine::add() {
+
+}
+
+void Machine::jump() {
+
+}
+
+bool Machine::halt() {
+    return 0;
+}
+
 void Machine::run() {
     for(int i = 0; i < 20; i++)
         Op_code(m.cells[i]);
