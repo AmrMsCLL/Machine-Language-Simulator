@@ -1,11 +1,14 @@
 #include "Machine.h"
 #include <fstream>
+#include <sstream>
 #include <iostream>
+#include <algorithm>
 #include <cmath>
+#include <string>
 using namespace std;
 
 void Machine::loadfile(string filename) {
-//    string file = filename+".txt";
+
     ifstream in("test.txt");
     string line;
     int i = 0;
@@ -13,14 +16,15 @@ void Machine::loadfile(string filename) {
         while (getline(in , line)) {
             string cell1, cell2, cell3;
             for(int i =0; i < line.size(); i++){
-                if(line[i] == '0' && line[i+1] == 'x')
-                    i++;
-                else
-                    cell1 +=  line[i];
+                if(line[i] == '0' && line[i+1] == 'x')i++;
+
+                else{
+
+                      cell1 +=  line[i];
+                    }
             }
-//          cout<<cell1<<"\n";
-            cout<<line;
-            m.cells[i] = line;
+            m.cells[i] = cell1;
+
             i++;
         }
         in.close();
@@ -30,7 +34,8 @@ void Machine::loadfile(string filename) {
 
 }
 
-string hexToint(string hexString){
+
+int hexToint(string hexString){
     int intValue = 0;
 
     for(int i = 0; i < hexString.size(); i++) {
@@ -46,11 +51,53 @@ string hexToint(string hexString){
             hexValue = hexChar - 'a' + 10;
         else {
             cout << "Err." << endl;
-            return "1";
+            return 1;
         }
 
         intValue += hexValue * pow(16, hexString.size() - i - 1);
     }
-    cout << "int = : ";//<< intValue << endl;
-    return to_string(intValue);
+    return intValue;
+}
+
+void Machine::Op_code(string convertAdd) {
+    vector<std::string> strings(4);
+    istringstream iss(convertAdd);
+    string token;
+    int i =0;
+    while(getline(iss, token, ' ')) {
+        strings[i] = token;
+        i++;
+    }
+    op = strings[0];
+    regster = strings[1];
+    value1 = strings[2];
+    value2 = strings[3];
+//    cout<<op<<" "<<regster<<" "<<value1<<" "<<value2<<"\n"
+    if(op == "1"){
+        loadFromemo(regster, value1);
+    }
+    else if(op == "2"){
+        load(regster, value1);
+    }
+    else if(op == "3"){
+        store()
+    }
+
+}
+void Machine::load(string regster, string value) {
+    r.reg[hexToint(regster)] = hexToint(value);
+}
+
+void Machine::loadFromemo(string regster, string address) {
+    r.reg[hexToint(regster)] = hexToint(address);
+}
+void Machine::run() {
+    for(int i = 0; i < 20; i++)
+        Op_code(m.cells[i]);
+    for(int i = 0; i < 20; i++)
+        cout<<m.cells[i]<<" ";
+    cout<<"\n";
+    for (int i = 0; i < 16; ++i) {
+        cout<<r.reg[i]<<" ";
+    }
 }
