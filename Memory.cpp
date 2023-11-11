@@ -1,7 +1,3 @@
-//
-// Created by ahmad on 11/10/2023.
-//
-
 #include "Memory.h"
 #include <iostream>
 #include <fstream>

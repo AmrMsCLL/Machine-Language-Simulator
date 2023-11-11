@@ -3,7 +3,6 @@
 #include "Register.h"
 #include "Memory.h"
 
-
 class Machine {
 private:
     int proCounter;

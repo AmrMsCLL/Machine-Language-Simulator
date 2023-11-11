@@ -1,13 +1,8 @@
-//
-// Created by ahmad on 11/10/2023.
-//
-
 #ifndef VOLE_MACHINE_MEMORY_H
 #define VOLE_MACHINE_MEMORY_H
 #include <iostream>
 #include <vector>
 using namespace std;
-
 
 class Memory {
 private:

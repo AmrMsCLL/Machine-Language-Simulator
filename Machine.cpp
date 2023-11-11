@@ -34,7 +34,6 @@ void Machine::loadfile(string filename) {
 
 }
 
-
 int hexToint(string hexString){
     int intValue = 0;
 
