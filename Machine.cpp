@@ -13,17 +13,14 @@ void Machine::loadfile(string filename) {
         while (getline(in , line)) {
             string cell1, cell2, cell3;
             for(int i =0; i < line.size(); i++){
-                if(line[i] == '0' && line[i+1] == 'x')i++;
-
-                else{
-
-                      cell1 +=  line[i];
-                    }
+                if(line[i] == '0' && line[i+1] == 'x')
+                    i++;
+                else
+                    cell1 +=  line[i];
             }
-//            cout<<cell1<<"\n";
-cout<<line;
+//          cout<<cell1<<"\n";
+            cout<<line;
             m.cells[i] = line;
-
             i++;
         }
         in.close();
@@ -32,7 +29,6 @@ cout<<line;
     }
 
 }
-
 
 string hexToint(string hexString){
     int intValue = 0;
