@@ -21,13 +21,13 @@ public:
     friend int hexToint(string hexString);
 
     void Op_code (string convertAdd);
-    void store(string address);
+    void store(string regster, string address);
     void loadFromemo(string regster, string address);
-    void addfloat(string address);
+    // void addfloat(string regster, string address, string address2);
     void load(string regster, string value);
-    void move(string address);
-    void add(string address);
-    void jump(string address);
+    void move(string address, string address2);
+    void add(string regster, string address, string address2);
+    void jump(string regster, string address);
     bool halt();
 };
 

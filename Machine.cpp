@@ -79,19 +79,19 @@ void Machine::Op_code(string convertAdd) {
         load(regster, value1);
     
     else if(op == "3")
-        store(address);
+        store(regster, value1); // doesnt work good 
     
     else if (op == "4")
-        move(address);
+        move(value1, value2);
     
     else if (op == "5")
-        add(address);
+        add(regster, value1, value2);
     
-    else if (op == "6")
-        addfloat(address);
+    // else if (op == "6")
+    //     addfloat(regster, value1);
     
     else if (op == "B")
-        jump(address);
+        jump(regster, value1);
     
     else if (op == "C")
         halt();
@@ -105,19 +105,26 @@ void Machine::loadFromemo(string regster, string address) {
     r.reg[hexToint(regster)] = hexToint(address);
 }
 
-void Machine::store() {
-
+void Machine::store(string regster, string address) {
+    if(value1 == "0" && value2 == "0")
+        cout << r.reg[hexToint(regster)];
+    else
+        m.cells[hexToint(address)] = r.reg[hexToint(regster)]; 
 }
 
-void Machine::move() {
-
+void Machine::move(string address, string address2) {
+    r.reg[hexToint(address2)] = r.reg[hexToint(address)]; 
 }
 
-void Machine::add() {
-
+void Machine::add(string regster, string address, string address2) {
+    r.reg[hexToint(regster)] = r.reg[hexToint(value1)] + r.reg[hexToint(value2)];
 }
 
-void Machine::jump() {
+// void Machine::addfloat(string regster, string address, string address2) {
+//     r.reg[hexToint(regster)] = hexToint(value1) + hexToint(value2);
+// } // gonna need to make it into float hextofloat :)
+
+void Machine::jump(string regster, string address) {
 
 }
 
