@@ -57,20 +57,23 @@ int hexToint(string hexString){
 }
 
 void Machine::Op_code(string convertAdd) {
+
     vector<std::string> strings(4);
     istringstream iss(convertAdd);
     string token;
     int i = 0;
+
     while(getline(iss, token, ' ')) {
         strings[i] = token;
         i++;
     }
+
     op = strings[0];
     regster = strings[1];
-    value1 = strings[2];
-    value2 = strings[3];
+    value1  = strings[2];
+    value2  = strings[3];
 //    cout<<op<<" "<<regster<<" "<<value1<<" "<<value2<<"\n"
-
+    // gonna transfer into a switch case soon cuz it looks better
     if(op == "1") // load reg r with pattern in memory xy
         loadFromemo(regster, value1);
     
@@ -78,7 +81,10 @@ void Machine::Op_code(string convertAdd) {
         load(regster, value1);
     
     else if(op == "3") // stores pattern in 
-        store(regster, value1, value2);                         // doesnt work good 
+        if(value1 == "0" && value2 == "0")
+            cout << "Screen : " << r.reg[hexToint(regster)] << endl; 
+        else
+            store(regster, value1);                      
     
     else if (op == "4") // move from value 2 to value 1
         move(value1, value2);
@@ -101,11 +107,8 @@ void Machine::loadFromemo(string regster, string address) {
     r.reg[hexToint(regster)] = hexToint(m.cells[hexToint(address)]);
 }
 
-void Machine::store(string regster, string address, string address2) {
-    if(hexToint(address) == 0 && hexToint(address2) == 0)
-        cout << "screeen<<<"<<r.reg[hexToint(regster)] << endl;
-    else
-        m.cells[hexToint(address)] = r.reg[hexToint(regster)]; 
+void Machine::store(string regster, string address) {
+        m.cells[hexToint(address)] = r.reg[hexToint(regster)];
 }
 
 void Machine::move(string address, string address2) {
@@ -133,9 +136,10 @@ void Machine::run() {
         Op_code(m.cells[proCounter]);
     }
      for(int i = 0; i < 16; i++)
-        cout<<m.cells[i]<<" / ";
-    cout<<"\n";
+        cout << m.cells[i] << " | ";
+    // cout << endl << m.cells[9]; // dont forget to delete 
+    cout << "\n";
     for (int i = 0; i < 16; ++i) {
-        cout<<r.reg[i]<<" ";
+        cout << r.reg[i] << " | ";
     }
 }
