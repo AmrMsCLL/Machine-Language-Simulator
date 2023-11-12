@@ -11,5 +11,5 @@
 int main() {
     Machine OO;
     OO.loadfile("asda");
-    OO.run();
+    OO.execute();
 }

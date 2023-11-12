@@ -19,10 +19,8 @@ private:
 
 public:
     Machine();
-    void showStatus();
+    string showStatus(int address);
     void loadfile(string filename);
-    void run();
-    void decode();
     void execute();
     friend int hexToint(string hexString);
 

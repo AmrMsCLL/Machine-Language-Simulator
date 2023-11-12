@@ -10,7 +10,7 @@
 Instructions :: Instructions(){
     proCounter = 0;
 }
-void Instructions::Op_code(string address1, string address2) {
+void Instructions::decode(string address1, string address2) {
     vector<std::string> strings(4);
     istringstream iss(address1);
     istringstream iss2(address2);
@@ -85,5 +85,6 @@ void Instructions::jump(string regster, string address) {
 }
 
 void Instructions::halt() { // works but i dont know if it should work like that ?
+    cout<<"Program has been halted\n";
     exit(0);
 }
