@@ -1,5 +1,6 @@
 #ifndef VOLE_MACHINE_REGISTER_H
 #define VOLE_MACHINE_REGISTER_H
+
 #include <iostream>
 using namespace std;
 
@@ -11,6 +12,5 @@ public:
     int reg[16];
     Register();
 };
-
 
 #endif //VOLE_MACHINE_REGISTER_H

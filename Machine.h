@@ -1,8 +1,8 @@
 #ifndef VOLE_MACHINE_MACHINE_H
 #define VOLE_MACHINE_MACHINE_H
+
 #include "Register.h"
 #include "Memory.h"
-
 
 class Machine {
 private:
@@ -28,10 +28,8 @@ public:
     void store(string regster, string address, string address2);
     void move(string address, string address2);
     void add(string regster, string address, string address2);
-    void addfloat(string regster, string address, string address2);
     void jump(string regster, string address);
     void halt();
 };
-
 
 #endif //VOLE_MACHINE_MACHINE_H
