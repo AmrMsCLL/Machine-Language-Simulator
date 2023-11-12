@@ -7,21 +7,17 @@
 #include <cmath>
 #include <string>
 using namespace std;
+
 Machine :: Machine(){
     I.proCounter = 0;
     I.instMemo = m;
     I.Re = r;
 
 }
-void Machine::showStatus()
-{
-    cout<<"Program Counter at the memory cell no. "<<I.proCounter<<"\n";
-    // cout<<""
 
-}
-void Machine::loadfile(string filename)
-{
 
+
+void Machine::loadfile(string filename) {
     ifstream in("test.txt");
     string line;
     int j = 0;
@@ -60,28 +56,23 @@ void Machine::loadfile(string filename)
 
 int hexToint(string hexString){
     int intValue = 0;
-
     for(int i = 0; i < hexString.size(); i++) {
         char hexChar = hexString[i];
         int hexValue;
         if(hexChar >= '0' && hexChar <= '9')
             hexValue = hexChar - '0';
-
         else if(hexChar >= 'A' && hexChar <= 'F')
             hexValue = hexChar - 'A' + 10;
-
         else if(hexChar >= 'a' && hexChar <= 'f')
             hexValue = hexChar - 'a' + 10;
         else {
             cout << "Err." << endl;
             return 1;
         }
-
         intValue += hexValue * pow(16, hexString.size() - i - 1);
     }
     return intValue;
 }
-
 
 void Machine::run() {
     I.proCounter = -2;

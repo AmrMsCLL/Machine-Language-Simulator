@@ -1,6 +1,7 @@
 #include "Memory.h"
 #include <iostream>
 #include <fstream>
+
 using namespace std;
 
 Memory ::Memory(){
@@ -10,4 +11,3 @@ Memory ::Memory(){
 string Memory::fetch(int address) {
     return cells[address];
 }
-

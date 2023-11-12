@@ -1,10 +1,10 @@
 #ifndef VOLE_MACHINE_MACHINE_H
 #define VOLE_MACHINE_MACHINE_H
+
 #include "Register.h"
 #include "Memory.h"
 #include "Instructions.h"
 // #include "Instructions.cpp"
-
 
 class Machine {
 private:
@@ -36,6 +36,5 @@ public:
     // void jump(string regster, string address);
     // void halt();
 };
-
 
 #endif //VOLE_MACHINE_MACHINE_H
