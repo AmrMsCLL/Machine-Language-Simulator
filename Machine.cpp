@@ -12,7 +12,6 @@ Machine :: Machine(){
     I.proCounter = 0;
     I.instMemo = m;
     I.Re = r;
-
 }
 
 void Machine::loadfile(string filename) {
@@ -23,15 +22,12 @@ void Machine::loadfile(string filename) {
         while (getline(in , line)) {
             string cell1, cell2, cell3;
             for(int i =0; i < line.size(); i++){
-                if(line[i] == '0' && line[i+1] == 'x')i++;
-
-                else{
-
+                if(line[i] == '0' && line[i+1] == 'x')
+                    i++;
+                else
                       cell1 +=  line[i];
-                    }
             }
             I.instMemo.cells[i] = cell1;
-
             i++;
         }
         in.close();
@@ -65,13 +61,11 @@ void Machine::run() {
     while(I.proCounter < 16){
         I.proCounter++;
         I.Op_code(I.instMemo.cells[I.proCounter]);
-
-
     }
      for(int i = 0; i < 16; i++)
-        cout<<I.instMemo.cells[i]<<" / ";
-    cout<<"\n";
+        cout<<I.instMemo.cells[i]<<" | ";
+    cout << "\n" ;
     for (int i = 0; i < 16; ++i) {
-        cout<<I.Re.reg[i]<<" ";
+        cout << I.Re.reg[i] << " ";
     }
 }
