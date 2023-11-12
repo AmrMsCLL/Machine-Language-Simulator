@@ -5,3 +5,7 @@ Register ::Register(){
         reg[i] = 0;
     }
 }
+
+int Register::getBitpattern(int r){
+    return reg[r];
+}
