@@ -130,7 +130,7 @@ void Machine::load(string regster, string address) {
 }
 
 void Machine::loadFromemo(string regster, string address) {
-    r.reg[hexToint(regster)] = hexToint(m.cells[hexToint(value1)]);
+    r.reg[hexToint(regster)] = hexToint(m.cells[hexToint(address)]);
 }
 
 void Machine::store(string regster, string address, string address2) {
@@ -146,11 +146,11 @@ void Machine::move(string address, string address2) {
 }
 
 void Machine::add(string regster, string address, string address2) {
-    r.reg[hexToint(regster)] = r.reg[hexToint(address)] + r.reg[hexToint(address2)];
+    r.reg[hexToint(regster)] = (r.reg[hexToint(address)]> pow(2, 8) -2 ? r.reg[hexToint(address)] - pow(2,8) : r.reg[hexToint(address)]) + (r.reg[hexToint(address2)]> pow(2, 8) -2 ? r.reg[hexToint(address2)] - pow(2,8) : r.reg[hexToint(address2)]);
 }
 
 void Machine::addfloat(string regster, string address, string address2) {
-    r.reg[hexToint(regster)] = hexToFloat(value1) + hexToFloat(value2);
+    r.reg[hexToint(regster)] = hexToFloat(address) + hexToFloat(address2);
 } // doesnt work :)
 
 void Machine::jump(string regster, string address) {
