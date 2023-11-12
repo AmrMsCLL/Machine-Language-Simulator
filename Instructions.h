@@ -22,7 +22,6 @@ class Instructions {
         void store(string regster, string address, string address2);
         void move(string address, string address2);
         void add(string regster, string address, string address2);
-        void addfloat(string regster, string address, string address2);
         void jump(string regster, string address);
         void halt();
 };
