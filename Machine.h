@@ -3,6 +3,7 @@
 #include "Register.h"
 #include "Memory.h"
 
+
 class Machine {
 private:
     int proCounter;
@@ -14,6 +15,7 @@ private:
     string value2;
 
 public:
+    Machine();
     void loadfile(string filename);
     void run();
     void decode();
@@ -23,7 +25,7 @@ public:
     void Op_code (string convertAdd);
     void load(string regster, string value);
     void loadFromemo(string regster, string address);
-    void store(string regster, string address);
+    void store(string regster, string address, string address2);
     void move(string address, string address2);
     void add(string regster, string address, string address2);
     void addfloat(string regster, string address, string address2);

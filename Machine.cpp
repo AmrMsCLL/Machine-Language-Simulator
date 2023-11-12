@@ -6,7 +6,9 @@
 #include <cmath>
 #include <string>
 using namespace std;
-
+Machine :: Machine(){
+    proCounter = 0;
+}
 void Machine::loadfile(string filename) {
 
     ifstream in("test.txt");
@@ -80,7 +82,7 @@ float hexToFloat(string hexString) {
         intValue += hexValue * pow(16, hexString.size() - i - 1);
     }
     float floatValue;
-    memcpy(&floatValue, &intValue, sizeof(floatValue));
+    // memcpy(&floatValue, &intValue, sizeof(floatValue));
     return floatValue;
 }
 
@@ -105,7 +107,7 @@ void Machine::Op_code(string convertAdd) {
         load(regster, value1);
     
     else if(op == "3") // stores pattern in 
-        store(regster, value1);                         // doesnt work good 
+        store(regster, value1, value2);                         // doesnt work good 
     
     else if (op == "4") // move from value 2 to value 1
         move(value1, value2);
@@ -128,22 +130,23 @@ void Machine::load(string regster, string address) {
 }
 
 void Machine::loadFromemo(string regster, string address) {
-    r.reg[hexToint(regster)] = r.reg[hexToint(value1)];
+    r.reg[hexToint(regster)] = hexToint(m.cells[hexToint(value1)]);
 }
 
-void Machine::store(string regster, string address) {
-    if(r.reg[hexToint(value1)] == 0 && r.reg[hexToint(value2)] == 0)
-        cout << r.reg[hexToint(regster)] << endl;
+void Machine::store(string regster, string address, string address2) {
+    if(hexToint(address) == 0 && hexToint(address2) == 0)
+        cout << "screeen<<<"<<r.reg[hexToint(regster)] << endl;
     else
         m.cells[hexToint(address)] = r.reg[hexToint(regster)]; 
 }
 
 void Machine::move(string address, string address2) {
     r.reg[hexToint(address2)] = r.reg[hexToint(address)]; 
+    r.reg[hexToint(address)] = 0;
 }
 
 void Machine::add(string regster, string address, string address2) {
-    r.reg[hexToint(regster)] = r.reg[hexToint(value1)] + r.reg[hexToint(value2)];
+    r.reg[hexToint(regster)] = r.reg[hexToint(address)] + r.reg[hexToint(address2)];
 }
 
 void Machine::addfloat(string regster, string address, string address2) {
@@ -151,6 +154,9 @@ void Machine::addfloat(string regster, string address, string address2) {
 } // doesnt work :)
 
 void Machine::jump(string regster, string address) {
+    // cout<<"reg1   "<<r.reg[hexToint(regster)]<<" | "<<r.reg[0]<<"\n";
+    if(r.reg[hexToint(regster)] != r.reg[0])
+        proCounter = hexToint(address);
 
 }
 
@@ -159,10 +165,15 @@ void Machine::halt() { // works but i dont know if it should work like that ?
 }
 
 void Machine::run() {
-    for(int i = 0; i < 16; i++)
-        Op_code(m.cells[i]);
-    for(int i = 0; i < 16; i++)
-        cout<<m.cells[i]<<" ";
+    proCounter = -1;
+    while(proCounter < 16){
+        proCounter++;
+        Op_code(m.cells[proCounter]);
+
+
+    }
+     for(int i = 0; i < 16; i++)
+        cout<<m.cells[i]<<" / ";
     cout<<"\n";
     for (int i = 0; i < 16; ++i) {
         cout<<r.reg[i]<<" ";
