@@ -132,8 +132,8 @@ void Machine::loadFromemo(string regster, string address) {
 }
 
 void Machine::store(string regster, string address) {
-    if(value1 == "0" && value2 == "0")
-        cout << r.reg[hexToint(regster)];
+    if(r.reg[hexToint(value1)] == 0 && r.reg[hexToint(value2)] == 0)
+        cout << r.reg[hexToint(regster)] << endl;
     else
         m.cells[hexToint(address)] = r.reg[hexToint(regster)]; 
 }
@@ -148,13 +148,13 @@ void Machine::add(string regster, string address, string address2) {
 
 void Machine::addfloat(string regster, string address, string address2) {
     r.reg[hexToint(regster)] = hexToFloat(value1) + hexToFloat(value2);
-} // gonna need to make it into float hextofloat :)
+} // doesnt work :)
 
 void Machine::jump(string regster, string address) {
 
 }
 
-void Machine::halt() { // works but i dont know if it works propely ?
+void Machine::halt() { // works but i dont know if it should work like that ?
     exit(0);
 }
 
