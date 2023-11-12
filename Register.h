@@ -7,7 +7,7 @@ class Register {
 private:
     string bitpattern;
 public:
-
+    int getBitpattern(int r);
     int reg[16];
     Register();
 };
