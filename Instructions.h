@@ -1,0 +1,16 @@
+//
+// Created by ahmad on 11/12/2023.
+//
+
+#ifndef MACHINE_LANGUAGE_SIMULATOR_INSTRUCTIONS_H
+#define MACHINE_LANGUAGE_SIMULATOR_INSTRUCTIONS_H
+
+
+
+class Instructions {
+
+};
+
+
+
+#endif //MACHINE_LANGUAGE_SIMULATOR_INSTRUCTIONS_H
