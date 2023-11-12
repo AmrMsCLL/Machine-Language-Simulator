@@ -87,13 +87,13 @@ void Machine::Op_code(string convertAdd) {
     else if (op == "5")
         add(regster, value1, value2);
     
-    // else if (op == "6")
-    //     addfloat(regster, value1);
+    else if (op == "6")
+        addfloat(regster, value1, value2);
     
-    else if (op == "B")
+    else if (op == "B" || op == "b")
         jump(regster, value1);
     
-    else if (op == "C")
+    else if (op == "C" || op == "c")
         halt();
 }
 
@@ -120,16 +120,16 @@ void Machine::add(string regster, string address, string address2) {
     r.reg[hexToint(regster)] = r.reg[hexToint(value1)] + r.reg[hexToint(value2)];
 }
 
-// void Machine::addfloat(string regster, string address, string address2) {
-//     r.reg[hexToint(regster)] = hexToint(value1) + hexToint(value2);
-// } // gonna need to make it into float hextofloat :)
+void Machine::addfloat(string regster, string address, string address2) {
+    r.reg[hexToint(regster)] = hexToint(value1) + hexToint(value2);
+} // gonna need to make it into float hextofloat :)
 
 void Machine::jump(string regster, string address) {
 
 }
 
-bool Machine::halt() {
-    return 0;
+void Machine::halt() { // works but i dont know if it works propely ?
+    exit(0);
 }
 
 void Machine::run() {
