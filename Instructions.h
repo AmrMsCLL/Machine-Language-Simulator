@@ -19,7 +19,7 @@ class Instructions {
         void Op_code (string address1, string address2);
         void load(string regster, string value);
         void loadFromemo(string regster, string address);
-        void store(string regster, string address, string address2);
+        void store(string regster, string address);
         void move(string address, string address2);
         void add(string regster, string address, string address2);
         void jump(string regster, string address);

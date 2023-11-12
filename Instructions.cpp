@@ -36,7 +36,10 @@ void Instructions::Op_code(string address1, string address2) {
         load(regster, value1);
     
     else if(op == "3") // stores pattern in 
-        store(regster, value1, value2);                         // doesnt work good 
+        if(value1 == "0" && value2 == "0")
+            cout << "screeen<<<"<<Re.reg[hexToint(regster)] << endl;
+        else
+            store(regster, value1);                         // doesnt work good 
     
     else if (op == "4") // move from value 2 to value 1
         move(value1, value2);
@@ -59,11 +62,8 @@ void Instructions::loadFromemo(string regster, string address) {
     Re.reg[hexToint(regster)] = hexToint(instMemo.cells[hexToint(address)]);
 }
 
-void Instructions::store(string regster, string address, string address2) {
-    if(hexToint(address) == 0 && hexToint(address2) == 0)
-        cout << "screeen<<<"<<Re.reg[hexToint(regster)] << endl;
-    else
-        instMemo.cells[hexToint(address)] = Re.reg[hexToint(regster)]; 
+void Instructions::store(string regster, string address) {
+    instMemo.cells[hexToint(address)] = Re.reg[hexToint(regster)]; 
 }
 
 void Instructions::move(string address, string address2) {

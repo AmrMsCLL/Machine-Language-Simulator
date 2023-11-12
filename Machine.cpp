@@ -12,7 +12,6 @@ Machine :: Machine(){
     I.proCounter = 0;
     I.instMemo = m;
     I.Re = r;
-
 }
 
 
@@ -86,6 +85,6 @@ void Machine::run() {
         cout<<I.instMemo.cells[i]<<" | ";
     cout<<"\n";
     for (int i = 0; i < 16; ++i) {
-        cout<<I.Re.reg[i]<<" ";
+        cout << I.Re.reg[i] << " ";
     }
 }
