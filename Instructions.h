@@ -16,7 +16,7 @@ class Instructions {
         Register Re;
         Memory instMemo;
         Instructions();
-        void Op_code (string convertAdd);
+        void Op_code (string address1, string address2);
         void load(string regster, string value);
         void loadFromemo(string regster, string address);
         void store(string regster, string address, string address2);

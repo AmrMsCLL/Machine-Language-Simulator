@@ -10,12 +10,17 @@
 Instructions :: Instructions(){
     proCounter = 0;
 }
-void Instructions::Op_code(string convertAdd) {
+void Instructions::Op_code(string address1, string address2) {
     vector<std::string> strings(4);
-    istringstream iss(convertAdd);
+    istringstream iss(address1);
+    istringstream iss2(address2);
     string token;
     int i =0;
-    while(getline(iss, token, ' ')) {
+    while(getline(iss, token, ' ') && i < 2) {
+        strings[i] = token;
+        i++;
+    }
+    while(getline(iss2, token, ' ') && i < 4) {
         strings[i] = token;
         i++;
     }
@@ -23,7 +28,7 @@ void Instructions::Op_code(string convertAdd) {
     regster = strings[1];
     value1 = strings[2];
     value2 = strings[3];
-//    cout<<op<<" "<<regster<<" "<<value1<<" "<<value2<<"\n"
+//    cout<<op<<" "<<regster<<" "<<value1<<" "<<value2<<"\n";
     if(op == "1") // load reg r with pattern in memory xy
         loadFromemo(regster, value1);
     

@@ -19,6 +19,7 @@ private:
 
 public:
     Machine();
+    void showStatus();
     void loadfile(string filename);
     void run();
     void decode();
