@@ -63,7 +63,7 @@ void Instructions::loadFromemo(string regster, string address) {
 }
 
 void Instructions::store(string regster, string address) {
-    instMemo.cells[hexToint(address)] = Re.reg[hexToint(regster)]; 
+    instMemo.cells[hexToint(address)] = to_string(Re.reg[hexToint(regster)]); 
 }
 
 void Instructions::move(string address, string address2) {
