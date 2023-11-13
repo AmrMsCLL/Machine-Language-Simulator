@@ -18,6 +18,7 @@ public:
     Register Re;
     Memory instMemo;
     Instructions();
+    
     void decode(string address1, string address2);
     void load(string regster, string value);
     void loadFromemo(string regster, string address);
