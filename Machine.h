@@ -24,6 +24,7 @@ public:
     void loadfile(string filename);
     void execute();
     friend int hexToint(string hexString);
+    friend string intTohex(int intNum);
 };
 
 #endif // VOLE_MACHINE_MACHINE_H

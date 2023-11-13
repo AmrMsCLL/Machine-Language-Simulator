@@ -13,6 +13,7 @@ Instructions ::Instructions()
 {
     proCounter = 0;
 }
+
 void Instructions::decode(string address1, string address2)
 {
     vector<std::string> strings(4);
@@ -78,7 +79,7 @@ void Instructions::store(string regster, string address)
 void Instructions::move(string address, string address2)
 {
     Re.reg[hexToint(address2)] = Re.reg[hexToint(address)];
-    Re.reg[hexToint(address)] = 0;
+    // Re.reg[hexToint(address)] = 0;
 }
 
 void Instructions::add(string regster, string address, string address2)
@@ -94,7 +95,7 @@ void Instructions::jump(string regster, string address)
 }
 
 void Instructions::halt()
-{ // works but i dont know if it should work like that ?
+{
     cout << "Program has been halted\n";
     exit(0);
 }
