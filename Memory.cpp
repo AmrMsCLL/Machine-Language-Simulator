@@ -6,10 +6,12 @@
 
 using namespace std;
 
-Memory ::Memory(){
+Memory ::Memory()
+{
     address = '0';
 };
 
-string Memory::fetch(int address) {
+string Memory::fetch(int address)
+{
     return cells[address];
 }

@@ -4,13 +4,15 @@
 #include <iostream>
 using namespace std;
 
-class Register {
+class Register
+{
 private:
     string bitpattern;
+
 public:
     int getBitpattern(int r);
     int reg[16];
     Register();
 };
 
-#endif //VOLE_MACHINE_REGISTER_H
+#endif // VOLE_MACHINE_REGISTER_H

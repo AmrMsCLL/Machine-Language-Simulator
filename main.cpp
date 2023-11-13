@@ -10,7 +10,8 @@
 #include "Memory.cpp"
 #include "Instructions.cpp"
 
-int main() {
+int main()
+{
     Machine OO;
     OO.loadfile("asda");
     OO.execute();
