@@ -73,34 +73,39 @@ void Machine::loadfile(string filename)
     }
 }
 
+// int hexToint(string hexString)
+// {
+//     int intValue = 0;
+//     while (hexString.front() == ' ')
+//         hexString.erase(0, 1);
+//     while (hexString.back() == ' ')
+//         hexString.pop_back();
+//     for (int i = 0; i < hexString.size(); i++)
+//     {
+//         char hexChar = hexString[i];
+//         int hexValue;
+//         if (hexChar == ' ')
+//             continue;
+//         if (hexChar >= '0' && hexChar <= '9')
+//             hexValue = hexChar - '0';
+//         else if (hexChar >= 'A' && hexChar <= 'F')
+//             hexValue = hexChar - 'A' + 10;
+//         else if (hexChar >= 'a' && hexChar <= 'f')
+//             hexValue = hexChar - 'a' + 10;
+//         else
+//         {
+//             // cout << "\nfasdf  " << hexChar << "\n";
+//             cout << "Err." << endl;
+//             exit(0);
+//         }
+//         intValue += hexValue * pow(16, hexString.size() - i - 1);
+//     }
+//     return intValue;
+// }
+
 int hexToint(string hexString)
 {
-    int intValue = 0;
-    while (hexString.front() == ' ')
-        hexString.erase(0, 1);
-    while (hexString.back() == ' ')
-        hexString.pop_back();
-    for (int i = 0; i < hexString.size(); i++)
-    {
-        char hexChar = hexString[i];
-        int hexValue;
-        if (hexChar == ' ')
-            continue;
-        if (hexChar >= '0' && hexChar <= '9')
-            hexValue = hexChar - '0';
-        else if (hexChar >= 'A' && hexChar <= 'F')
-            hexValue = hexChar - 'A' + 10;
-        else if (hexChar >= 'a' && hexChar <= 'f')
-            hexValue = hexChar - 'a' + 10;
-        else
-        {
-            // cout << "\nfasdf  " << hexChar << "\n";
-            cout << "Err." << endl;
-            exit(0);
-        }
-        intValue += hexValue * pow(16, hexString.size() - i - 1);
-    }
-    return intValue;
+    return stoi(hexString, 0, 16);
 }
 
 string intTohex(int intNum)
