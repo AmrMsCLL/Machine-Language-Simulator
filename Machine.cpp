@@ -25,6 +25,7 @@ string Machine::showStatus(int address)
 void Machine::loadfile(string filename)
 {
     // string input;
+    // cout << "Enter Filename :";
     // cin >> input;
     
     // if(intput.find(".txt") == string::npos) // checks if the input already has the .txt extension
