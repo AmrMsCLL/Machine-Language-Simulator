@@ -26,7 +26,9 @@ void Machine::loadfile(string filename)
 {
     // string input;
     // cin >> input;
-
+    
+    // if(intput.find(".txt") == string::npos) // checks if the input already has the .txt extension
+    //     input += ".txt"; // adds the .txt extension if not found in input
     ifstream in("test.txt"); //(input);
     string line;
     int j = 0;
