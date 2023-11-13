@@ -89,12 +89,12 @@ void Instructions::add(string regster, string address, string address2)
 void Instructions::jump(string regster, string address)
 {
     // cout<<"reg1   "<<r.reg[hexToint(regster)]<<" | "<<r.reg[0]<<"\n";
-    if (Re.reg[hexToint(regster)] != Re.reg[0])
+    if (Re.reg[hexToint(regster)] == Re.reg[0])
         proCounter = hexToint(address);
 }
 
 void Instructions::halt()
-{ // works but i dont know if it should work like that ?
+{ 
     cout << "Program has been halted\n";
     exit(0);
 }
