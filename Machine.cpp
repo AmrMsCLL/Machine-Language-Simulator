@@ -144,14 +144,14 @@ string Machine::getroCounter(){
 
 void Machine::showMemory(string p1, string p2){
     cout << "Memory    ----> \n";
-    for (int i = hexToint(p1); i < hexToint(p2); i++){
+    for (int i = hexToint(p1); i <= hexToint(p2); i++){
         cout <<"cell "<<(intTohex(i).size() == 1 ? "0"+intTohex(i) : intTohex(i))<<" |0x"<< I.instMemo.cells[i] << "|\n";
     }
 }
 
 void Machine::showRegisters(string p1, string p2){
     cout << "Registers ----> \n";
-    for (int i = hexToint(p1); i < hexToint(p2); i++)
+    for (int i = hexToint(p1); i <= hexToint(p2); i++)
     {
         cout <<"R"<<" "<<i<< " |0x" <<I.Re.reg[i] << "|\n";
     }
@@ -159,4 +159,9 @@ void Machine::showRegisters(string p1, string p2){
 
 void Machine::showRegister(string r){
     cout<<I.Re.reg[hexToint(r)]<<"\n";
+}
+
+void Machine::clear(){
+    for(int i = 0; i < 256; i++)
+        I.instMemo.cells[i] = '0';
 }

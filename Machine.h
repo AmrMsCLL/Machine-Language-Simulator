@@ -25,6 +25,7 @@ public:
     void showRegister(string r);
     string showMemorycell(string address);
     string getroCounter();
+    void clear();
     void loadfile();
     void execute();
     friend int hexToint(string hexString);
