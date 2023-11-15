@@ -9,7 +9,7 @@
 #include <string>
 using namespace std;
 
-Machine ::Machine()
+Machine::Machine()
 {
     I.proCounter = 0;
     I.instMemo = m;
