@@ -27,7 +27,7 @@ void Machine::loadfile(string filename)
     // string input;
     // cout << "Enter Filename :";
     // cin >> input;
-    
+
     // if(intput.find(".txt") == string::npos) // checks if the input already has the .txt extension
     //     input += ".txt"; // adds the .txt extension if not found in input
     ifstream in("test.txt"); //(input);
@@ -59,7 +59,6 @@ void Machine::loadfile(string filename)
                 cell1.erase(0, 1);
             if (cell2.front() == ' ')
                 cell2.erase(0, 1);
-            // cout<<cell1<<"|"<<cell2<<"\n";
             I.instMemo.cells[j] = cell1;
             I.instMemo.cells[j + 1] = cell2;
 
@@ -73,47 +72,42 @@ void Machine::loadfile(string filename)
     }
 }
 
-// int hexToint(string hexString)
-// {
-//     int intValue = 0;
-//     while (hexString.front() == ' ')
-//         hexString.erase(0, 1);
-//     while (hexString.back() == ' ')
-//         hexString.pop_back();
-//     for (int i = 0; i < hexString.size(); i++)
-//     {
-//         char hexChar = hexString[i];
-//         int hexValue;
-//         if (hexChar == ' ')
-//             continue;
-//         if (hexChar >= '0' && hexChar <= '9')
-//             hexValue = hexChar - '0';
-//         else if (hexChar >= 'A' && hexChar <= 'F')
-//             hexValue = hexChar - 'A' + 10;
-//         else if (hexChar >= 'a' && hexChar <= 'f')
-//             hexValue = hexChar - 'a' + 10;
-//         else
-//         {
-//             // cout << "\nfasdf  " << hexChar << "\n";
-//             cout << "Err." << endl;
-//             exit(0);
-//         }
-//         intValue += hexValue * pow(16, hexString.size() - i - 1);
-//     }
-//     return intValue;
-// }
-
 int hexToint(string hexString)
 {
-    return stoi(hexString, 0, 16);
+    int intValue = 0;
+    while (hexString.front() == ' ')
+        hexString.erase(0, 1);
+    while (hexString.back() == ' ')
+        hexString.pop_back();
+    for (int i = 0; i < hexString.size(); i++)
+    {
+        char hexChar = hexString[i];
+        int hexValue;
+        if (hexChar == ' ')
+            continue;
+        if (hexChar >= '0' && hexChar <= '9')
+            hexValue = hexChar - '0';
+        else if (hexChar >= 'A' && hexChar <= 'F')
+            hexValue = hexChar - 'A' + 10;
+        else if (hexChar >= 'a' && hexChar <= 'f')
+            hexValue = hexChar - 'a' + 10;
+        else
+        {
+            cout << "Err." << endl;
+            exit(0);
+        }
+        intValue += hexValue * pow(16, hexString.size() - i - 1);
+    }
+    return intValue;
 }
 
 string intTohex(int intNum)
 {
     string hexStr = "0123456789ABCDEF";
-    string result = "0x";
-    while(intNum != 0) {
-        result = result + hexStr[intNum % 16];
+    string result = "";
+    while (intNum != 0)
+    {
+        result = hexStr[intNum % 16] + result;
         intNum /= 16;
     }
     return result;
@@ -127,13 +121,13 @@ void Machine::execute()
         I.proCounter += 2;
         I.decode(I.instMemo.cells[I.proCounter], I.instMemo.cells[I.proCounter + 1]);
     }
-    cout << "Memory ----> \n";
-    for (int i = 0; i < 16; i++)
-        cout << "0x" << I.instMemo.cells[i] << "\n";
-    // cout << "\n";
+    cout << "Memory    ----> \n";
+    for (int i = 0; i < 32; i++)
+        cout << "0x" << I.instMemo.cells[i] << " | ";
+    cout << "\n";
     cout << "Registers ----> \n";
     for (int i = 0; i < 16; i++)
     {
-        cout << intTohex(I.Re.reg[i]) << "\n";
+        cout << "0x" << intTohex(I.Re.reg[i]) << " | ";
     }
 }
