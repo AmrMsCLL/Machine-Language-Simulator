@@ -17,4 +17,4 @@ public:
     Memory();
 };
 
-#endif // VOLE_MACHINE_MEMORY_H
+#endif

@@ -15,4 +15,4 @@ public:
     Register();
 };
 
-#endif // VOLE_MACHINE_REGISTER_H
+#endif

@@ -4,12 +4,10 @@
 #include "Register.h"
 #include "Memory.h"
 #include "Instructions.h"
-// #include "Instructions.cpp"
 
 class Machine
 {
 private:
-    // int proCounter;
     Register r;
     Memory m;
     Instructions I;
@@ -32,4 +30,4 @@ public:
     friend string intTohex(int intNum);
 };
 
-#endif // VOLE_MACHINE_MACHINE_H
+#endif
