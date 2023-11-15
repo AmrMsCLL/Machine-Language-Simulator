@@ -40,9 +40,10 @@ void Machine::loadfile(string filename)
         {
             string cell1, cell2, cell3;
             int cnt = 0;
+            // cout<<line<<" | ";
             for (int i = 0; i < line.size(); i++)
             {
-                if (line[i] == '0' && line[i + 1] == 'x')
+                if (line[i] == '0' && line[i+1] == 'x')
                     i++;
 
                 else
@@ -55,18 +56,24 @@ void Machine::loadfile(string filename)
                     cnt++;
                 }
             }
-            if (cell1.front() == ' ')
-                cell1.erase(0, 1);
-            if (cell2.front() == ' ')
-                cell2.erase(0, 1);
+            for(int i = 0 ; i < cell1.size(); i++){
+                if(cell1[i] == ' ')cell1.erase(i, 1);
+            }
+            for(int i = 0 ; i < cell2.size(); i++){
+                if(cell2[i] == ' ')cell2.erase(i, 1);
+            }
+
+
             I.instMemo.cells[j] = cell1;
             I.instMemo.cells[j + 1] = cell2;
-
             j += 2;
-        }
-        in.close();
+        
+
     }
-    else
+            in.close();
+
+    }
+        else
     {
         throw("ERROR!!!");
     }
@@ -110,24 +117,25 @@ string intTohex(int intNum)
         result = hexStr[intNum % 16] + result;
         intNum /= 16;
     }
+    if(result == "")result= "0";
     return result;
 }
 
 void Machine::execute()
 {
     I.proCounter = -2;
-    while (I.proCounter < 16)
+    while (I.proCounter < 32)
     {
         I.proCounter += 2;
         I.decode(I.instMemo.cells[I.proCounter], I.instMemo.cells[I.proCounter + 1]);
     }
     cout << "Memory    ----> \n";
     for (int i = 0; i < 32; i++)
-        cout << "0x" << I.instMemo.cells[i] << " | ";
+        cout <<char(65+(i/10))<<" "<<i%10<<" |0x"<< I.instMemo.cells[i] << "|\n";
     cout << "\n";
     cout << "Registers ----> \n";
     for (int i = 0; i < 16; i++)
     {
-        cout << "0x" << intTohex(I.Re.reg[i]) << " | ";
+        cout <<"R"<<" "<<i<< " |0x" <<I.Re.reg[i] << "|\n";
     }
 }

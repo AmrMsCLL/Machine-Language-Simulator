@@ -20,12 +20,12 @@ public:
     Instructions();
     
     void decode(string address1, string address2);
-    void load(string regster, string value);
-    void loadFromemo(string regster, string address);
-    void store(string regster, string address);
+    void load(string regster, string value, string value2);
+    void loadFromemo(string regster, string address, string value2);
+    void store(string regster, string address, string value2);
     void move(string address, string address2);
     void add(string regster, string address, string address2);
-    void jump(string regster, string address);
+    void jump(string regster, string address, string value2);
     void halt();
 };
 

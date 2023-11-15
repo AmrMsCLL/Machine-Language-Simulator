@@ -9,6 +9,9 @@ using namespace std;
 Memory ::Memory()
 {
     address = '0';
+    for(int i =0 ; i < 256; i++){
+        cells[i] = '0';
+    }
 };
 
 string Memory::fetch(int address)
