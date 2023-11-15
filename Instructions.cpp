@@ -79,5 +79,5 @@ void Instructions::jump(string regster, string address, string value2)
 void Instructions::halt()
 { 
     cout << "Program has been halted\n";
-    exit(0);
+    // exit(0);
 }

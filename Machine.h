@@ -20,8 +20,12 @@ private:
 
 public:
     Machine();
-    string showStatus(int address);
-    void loadfile(string filename);
+    void showMemory(string p1, string p2);
+    void showRegisters(string p1, string p2);
+    void showRegister(string r);
+    string showMemorycell(string address);
+    string getroCounter();
+    void loadfile();
     void execute();
     friend int hexToint(string hexString);
     friend string intTohex(int intNum);
